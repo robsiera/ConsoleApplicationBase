@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 // All console commands must be in the sub-namespace Commands:
 namespace ConsoleApplicationBase.Commands
@@ -14,27 +10,23 @@ namespace ConsoleApplicationBase.Commands
 
         public static string DoSomething(int id, string data)
         {
-            return string.Format(ConsoleFormatting.Indent(2) + 
-                "I did something to the record Id {0} and saved the data '{1}'", id, data);
+            return ConsoleFormatting.Indent(2) + $"I did something to the record Id {id} and saved the data '{data}'";
         }
 
 
         public static string DoSomethingElse(DateTime date)
         {
-            return string.Format(ConsoleFormatting.Indent(2) + "I did something else on {0}", date);
+            return ConsoleFormatting.Indent(2) + $"I did something else on {date}";
         }
 
 
         public static string DoSomethingOptional(int id, string data = "No Data Provided")
         {
-            var result = string.Format(ConsoleFormatting.Indent(2) + 
-                "I did something to the record Id {0} and saved the data {1}", id, data);
+            var result = ConsoleFormatting.Indent(2) + $"I did something to the record Id {id} and saved the data {data}";
 
             if(data == "No Data Provided")
             {
-                result = string.Format(ConsoleFormatting.Indent(2) + 
-                "I did something to the record Id {0} but the optinal parameter "
-                + "was not provided, so I saved the value '{1}'", id, data);
+                result = ConsoleFormatting.Indent(2) + $"I did something to the record Id {id} but the optinal parameter was not provided, so I saved the value '{data}'";
             }
             return result;
         }

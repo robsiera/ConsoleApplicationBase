@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using ConsoleApplicationBase.Commands;
 
 namespace ConsoleApplicationBase
 {
@@ -13,8 +8,7 @@ namespace ConsoleApplicationBase
         public ConsoleCommand(string input)
         {
             // Ugly regex to split string on spaces, but preserve quoted text intact:
-            var stringArray = 
-                Regex.Split(input, "(?<=^[^\"]*(?:\"[^\"]*\"[^\"]*)*) (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            var stringArray = Regex.Split(input, "(?<=^[^\"]*(?:\"[^\"]*\"[^\"]*)*) (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
             _arguments = new List<string>();
             for (int i = 0; i < stringArray.Length; i++)
@@ -63,14 +57,8 @@ namespace ConsoleApplicationBase
         public string Name { get; set; }
         public string LibraryClassName { get; set; }
 
-        private List<string> _arguments;
-        public IEnumerable<string> Arguments
-        {
-            get
-            {
-                return _arguments;
-            }
-        }
+        private readonly List<string> _arguments;
+        public IEnumerable<string> Arguments => _arguments;
     }
 
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ConsoleApplicationBase.Models
 {
@@ -18,19 +14,15 @@ namespace ConsoleApplicationBase.Models
     public static class SampleData
     {
         private static List<User> _userData;
-        public static List<User> Users
-        {
-            get
-            {
-                // List will be initialized with data the first time the
-                // static property is accessed:
-                if(_userData == null)
-                {
-                    _userData = CreateInitialUsers();
-                }
-                return _userData;
-            }
-        }
+
+
+        /// <summary>
+        /// Gets the Users
+        /// </summary>
+        /// <remarks>
+        /// List will be initialized with data the first time the static property is accessed
+        /// </remarks>
+        public static List<User> Users => _userData ?? (_userData = CreateInitialUsers());
 
 
         // Some test data:
